@@ -7,7 +7,7 @@ resource "azurerm_postgresql_flexible_server" "psql" {
   version                = "13"
 
   storage_mb             = 32768
-  sku_name               = "Standard_B1ms"  # updated
+  sku_name               = "B_Standard_B1ms"  #  Valid low-cost burstable SKU
   zone                   = "1"
 
   backup_retention_days        = 7
