@@ -3,7 +3,7 @@ name: Deploy Azure PostgreSQL Server
 on:
   push:
     branches:
-      - main  # adjust if using a different branch
+      - main  # change if you're using another branch
 
 jobs:
   terraform:
@@ -21,15 +21,12 @@ jobs:
 
       - name:  Terraform Init
         run: terraform init
-        working-directory: ./azure-DB-PSQL-
 
       - name:  Terraform Plan
         run: terraform plan -var-file="terraform.tfvars"
-        working-directory: ./azure-DB-PSQL-
 
       - name:  Terraform Apply
         run: terraform apply -auto-approve -var-file="terraform.tfvars"
-        working-directory: ./azure-DB-PSQL-
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
