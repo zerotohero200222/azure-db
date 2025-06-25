@@ -23,3 +23,4 @@ variable "TF_VAR_PSQL_ADMIN_PASSWORD" {
   type        = string
   sensitive   = true
 }
+
