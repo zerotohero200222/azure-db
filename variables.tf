@@ -18,7 +18,7 @@ variable "psql_admin_username" {
   type        = string
 }
 
-variable "TF_VAR_PSQL_ADMIN_PASSWORD" {
+variable "psql_admin_password" {
   description = "DB admin password"
   type        = string
   sensitive   = true
