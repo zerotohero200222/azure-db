@@ -13,8 +13,4 @@ resource "azurerm_postgresql_flexible_server" "psql" {
   backup_retention_days        = 7
   geo_redundant_backup_enabled = false
   auto_grow_enabled            = true
-
-  authentication {
-    password_enabled = true
-  }
 }
