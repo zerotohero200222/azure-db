@@ -6,8 +6,8 @@ resource "azurerm_postgresql_flexible_server" "psql" {
   administrator_password = var.psql_admin_password
   version                = "13"
 
-  storage_mb             = 32768  # Free-tier size
-  sku_name               = "B1ms" # Free/low-cost
+  storage_mb             = 32768
+  sku_name               = "Standard_B1ms"  # updated
   zone                   = "1"
 
   backup_retention_days        = 7
