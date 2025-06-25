@@ -3,7 +3,7 @@ name: Deploy Azure PostgreSQL Server
 on:
   push:
     branches:
-      - main  # change if you're using another branch
+      - main
 
 jobs:
   terraform:
@@ -11,25 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name:  Checkout Code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name:  Set up Terraform
+      - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.5.7
 
-      - name:  Terraform Init
+      - name: Terraform Init
         run: terraform init
+        working-directory: .
 
-      - name:  Terraform Plan
+      - name: Terraform Plan
         run: terraform plan -var-file="terraform.tfvars"
+        working-directory: .
 
-      - name:  Terraform Apply
+      - name: Terraform Apply
         run: terraform apply -auto-approve -var-file="terraform.tfvars"
+        working-directory: .
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          TF_VAR_psql_admin_password: ${{ secrets.TF_VAR_PSQL_ADMIN_PASSWORD }}
+          TF_VAR_psql_admin_password: ${{ secrets.TF_VAR_psql_admin_password }}
