@@ -1,4 +1,4 @@
-psql_server_name      = "prathyusha-psql-server"
+psql_server_name      = "psql-server"
 resource_group_name   = "psql-rg"
 location              = "East US"
 psql_admin_username   = "psqladmin"
